@@ -9,6 +9,7 @@ class CitiesController < ApplicationController
 
   # GET /cities/1 or /cities/1.json
   def show
+    render layout: 'page'
   end
 
   # GET /cities/new

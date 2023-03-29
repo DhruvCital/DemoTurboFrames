@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DemoTurboFrames</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-gray-100">
+    <main class="relative flex flex-col w-full h-screen container mx-auto max-w-sm bg-white">
+      <div class="flex-grow px-5">
+        <%= turbo_frame_tag :main_content, target: :_top do %>
+          <%= yield %>
+        <% end %>
+      </div>
+    </main>
+  </body>
+</html>

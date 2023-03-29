@@ -1,6 +1,6 @@
 <%= turbo_frame_tag :new_state do %>
   <%= form_with(model: state, url: "/states")  do |form| %>
-    <% if city.errors.any? %>
+    <% if state.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(state.errors.count, "error") %> prohibited this state from being saved:</h2>
 
