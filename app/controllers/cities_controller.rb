@@ -26,7 +26,15 @@ class CitiesController < ApplicationController
     @city = City.new(city_params)
     @city.save
 
-    render partial: 'cities/create'
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update(:new_city, partial: 'cities/index/plus_btn') +
+                             turbo_stream.update(:cities_count, partial: 'cities/index/cities_count', locals: { count: City.all.count }) +
+                             turbo_stream.append(:cities_list, partial: 'cities/index/city', locals: { city: @city })
+      end
+
+      format.html { redirect_to cities_path }
+    end  
   end
 
   # PATCH/PUT /cities/1 or /cities/1.json

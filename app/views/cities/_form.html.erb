@@ -1,4 +1,4 @@
-<%= turbo_frame_tag :new_city do %>
+<%= turbo_frame_tag :new_city, target: :_top do %>
   <%= form_with(model: city, url: "/cities")  do |form| %>
     <% if city.errors.any? %>
       <div style="color: red">
