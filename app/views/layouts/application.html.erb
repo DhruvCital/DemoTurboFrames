@@ -17,16 +17,21 @@
         <%= yield %>
       </div>
 
-      <div class="flex-shrink-0 absolute bottom-0 tabs flex items-center w-full h-16 border border-t  text-sm font-medium text-gray-700"> <%# data-turbo-frame='main_content' data-turbo-action='advance' didn't worked here %>
+      <div data-controller="tabs" class="tabs flex-shrink-0 absolute bottom-0 tabs flex items-center w-full h-16 border border-t  text-sm font-medium text-gray-500" > <%# data-turbo-frame='main_content' data-turbo-action='advance' didn't worked here %>
         <%# turbo_frame_tag class: 'flex-shrink-0 absolute bottom-0 tabs flex items-center w-full h-16 border border-t  text-sm font-medium text-gray-700', data: { turbo_action: 'advance' } do %>
           <div class="h-full w-1/2">
-            <%= link_to cities_path, class: 'flex w-full h-full items-center justify-center', data: { turbo_frame: :main_content, turbo_action: 'advance' } do %>
-              <span>Cities</span>
+            <%= link_to cities_path, class: "flex w-full h-full items-center justify-center #{@active_tab == :cities ? 'active' : '' }", data: { turbo_frame: :main_content, turbo_action: 'advance', tabs_target: "tab", action: "click->tabs#toggle" } do %>
+              <span class="pointer-events-none">Cities</span>
+              <%
+                # Processing by CitiesController#index as HTML
+                # Rendering layout /Users/dhruv/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/turbo-rails-1.4.0/app/views/layouts/turbo_rails/frame.html.erb
+                # Rendering cities/index.html.erb within layouts/turbo_rails/frame
+              %>
             <% end %>
           </div>
           <div class="border-l h-full w-1/2">
-            <%= link_to states_path, class: 'flex h-full w-full items-center justify-center', data: { turbo_frame: :main_content, turbo_action: 'advance' } do %>
-              <span>States</span>
+            <%= link_to states_path, class: "flex h-full w-full items-center justify-center #{@active_tab == :states ? 'active' : '' }", data: { turbo_frame: :main_content, turbo_action: 'advance', tabs_target: "tab", action: "click->tabs#toggle" } do %>
+              <span class="pointer-events-none">States</span>
               <%
                 # Processing by StatesController#index as HTML
                 # Rendering layout /Users/dhruv/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/turbo-rails-1.4.0/app/views/layouts/turbo_rails/frame.html.erb

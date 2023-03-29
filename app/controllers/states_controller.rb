@@ -1,6 +1,6 @@
 class StatesController < ApplicationController
   before_action :set_state, only: %i[ show edit update destroy ]
-
+  before_action :set_active_tab
   # GET /states or /states.json
   def index
     @states = State.all
@@ -66,5 +66,9 @@ class StatesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def state_params
       params.require(:state).permit(:name)
+    end
+
+    def set_active_tab
+      @active_tab = :states
     end
 end

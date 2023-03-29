@@ -1,6 +1,6 @@
 class CitiesController < ApplicationController
   before_action :set_city, only: %i[ show edit update destroy ]
-
+  before_action :set_active_tab
   # GET /cities or /cities.json
   def index
     @cities = City.all
@@ -60,5 +60,9 @@ class CitiesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def city_params
       params.require(:city).permit(:name)
+    end
+
+    def set_active_tab
+      @active_tab = :cities
     end
 end
