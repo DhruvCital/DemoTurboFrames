@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :states
   resources :cities do
     collection do
       get :load_2_frames
