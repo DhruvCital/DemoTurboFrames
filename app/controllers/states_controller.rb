@@ -8,6 +8,7 @@ class StatesController < ApplicationController
 
   # GET /states/1 or /states/1.json
   def show
+    render layout: 'page'
   end
 
   # GET /states/new
@@ -22,16 +23,17 @@ class StatesController < ApplicationController
   # POST /states or /states.json
   def create
     @state = State.new(state_params)
+    @state.save
 
     respond_to do |format|
-      if @state.save
-        format.html { redirect_to state_url(@state), notice: "State was successfully created." }
-        format.json { render :show, status: :created, location: @state }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @state.errors, status: :unprocessable_entity }
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update(:new_state, partial: 'states/index/plus_btn') +
+                             turbo_stream.update(:states_count, partial: 'states/index/count', locals: { count: State.all.count }) +
+                             turbo_stream.append(:states_list, partial: 'states/index/state', locals: { state: @state })
       end
-    end
+
+      format.html { redirect_to states_path }
+    end 
   end
 
   # PATCH/PUT /states/1 or /states/1.json
