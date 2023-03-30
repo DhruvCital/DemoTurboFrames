@@ -12,7 +12,7 @@ class CitiesController < ApplicationController
 
   # GET /cities/1 or /cities/1.json
   def show
-    sleep(0.5)
+    sleep(2)
     # render layout: 'page'
     
   end

@@ -21,21 +21,21 @@
       });
     </script>
     <main id="mainContainer" class="relative flex flex-col w-full h-screen container mx-auto max-w-sm bg-white">
-      <div id='main_top_bar' class="flex-shrink-0 absolute top-0 w-full max-h-16">
-        <%= yield :main_top_bar %>
-      </div>
-      <div class="py-16 flex-grow px-5 overflow-y-auto">
-        <div class="pt-4 h-full overflow-y-auto">
-          <%= turbo_frame_tag :main_content, data: { turbo_action: :advance } do %>
-            <%= yield %>
-          <% end %>
+      <%= turbo_frame_tag :main_content, data: { turbo_action: :advance } do %>
+        <div id='main_top_bar' class="flex-shrink-0 absolute top-0 w-full max-h-16">
+          <%= yield :main_top_bar %>
         </div>
-      </div>
+        <div class="py-16 flex-grow px-5 overflow-y-auto">
+          <div class="pt-4 h-full overflow-y-auto">
+              <%= yield %>
+          </div>
+        </div>
 
 
-      <div id='main_bottom_bar' class="flex-shrink-0 absolute bottom-0 w-full max-h-16">
-        <%= yield :main_bottom_bar %>
-      </div>  
+        <div id='main_bottom_bar' class="flex-shrink-0 absolute bottom-0 w-full max-h-16">
+          <%= yield :main_bottom_bar %>
+        </div>  
+      <% end # turbo_frame_tag :main_content %>
     </main>
   </body>
 </html>

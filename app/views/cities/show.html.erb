@@ -1,5 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
+
+
+<% content_for :main_top_bar do %>
+  <%= render 'layouts/application/top_bar', title: "City: #{@city.name}" %>
+<% end %>
+
 <%= render @city %>
 
 <div>
