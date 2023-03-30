@@ -2,14 +2,19 @@ class CitiesController < ApplicationController
   before_action :set_city, only: %i[ show edit update destroy ]
   before_action :set_active_tab
   # GET /cities or /cities.json
+  def root 
+    redirect_to cities_path
+  end
   def index
+    sleep(0.5)
     @cities = City.all
-    puts("city: #{@cities.to_a}")
   end
 
   # GET /cities/1 or /cities/1.json
   def show
-    render layout: 'page'
+    sleep(0.5)
+    # render layout: 'page'
+    
   end
 
   # GET /cities/new

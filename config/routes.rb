@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/', to: 'cities#root'
   resources :states
   resources :cities do
     collection do

@@ -1,0 +1,12 @@
+<%= turbo_stream.update :main_top_bar do %>
+  <%= render 'layouts/application/top_bar', formats: [:html], title: 'Cities' %>
+<% end %>
+
+<%= turbo_stream.update :main_content do %>
+  <%= render 'cities/index/list', formats: [:html], cities: @cities %>
+<% end %>
+
+<%= turbo_stream.update :main_bottom_bar do %>
+  <%= render 'layouts/application/bottom_nav', formats: [:html], active_tab: @active_tab %>
+<% end %>
+

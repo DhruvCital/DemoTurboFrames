@@ -1,18 +1,10 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :main_top_bar do %>
+  <%= render 'layouts/application/top_bar', title: 'Cities' %>
+<% end %>
 
-  <div class="flex flex-col w-full">
-    <h1 class="block text-2xl text-gray-900 font-medium">
-      <span>Cities</span>
-    </h1>
+<%= render 'cities/index/list', cities: @cities %>
 
-    <%= render "cities/index/cities_count", count: @cities.count %>
+<% content_for :main_bottom_bar do %>
+  <%= render 'layouts/application/bottom_nav', active_tab: @active_tab %>
+<% end %>
 
-    <div class="mt-4" id="cities_list">
-      <% @cities.each do |city| %>
-        <%= render 'cities/index/city', city: city %>
-      <% end %>
-    </div>
-
-    <%= render "cities/index/plus_btn" %>
-
-  </div>

@@ -1,0 +1,12 @@
+<div class="flex flex-col w-full">
+  <%= render "cities/index/cities_count", count: cities.count %>
+
+  <div class="mt-4" id="cities_list">
+    <% cities.each do |city| %>
+      <%= render 'cities/index/city', city: city %>
+    <% end %>
+  </div>
+
+  <%= render "cities/index/plus_btn" %>
+
+</div>
